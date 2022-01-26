@@ -24,5 +24,4 @@ runs:
     - shell: bash
       id: replace
       run: |-
-        echo ${{ inputs.text }} | sed s/${{ inputs.find }}/${{ inputs.replace }}/ text.txt | read result
-        echo '::set-output name=result::$result'
+        echo ${{ inputs.text }} | sed s/${{ inputs.find }}/${{ inputs.replace }}/ | (read result;echo '::set-output name=result::$result')
