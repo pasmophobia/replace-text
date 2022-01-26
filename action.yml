@@ -25,4 +25,5 @@ runs:
       id: replace
       run: |-
         text=${{ inputs.text }}
-        echo $text | sed 's/${{ inputs.find }}/${{ inputs.replace }}' | (read result ; echo '::set-output name=result::$result')
+        echo $text | sed 's/${{ inputs.find }}/${{ inputs.replace }}' | read result
+        echo '::set-output name=result::$result'
