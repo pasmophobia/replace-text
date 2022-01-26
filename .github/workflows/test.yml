@@ -1,0 +1,14 @@
+name: test
+on: push
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run replace
+        uses: replace-text@main
+        id: replace-text
+      - name: echo
+        run: echo ${{ steps.replace-text.outputs.result }}

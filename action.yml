@@ -1,0 +1,29 @@
+name: replace-text
+description: Find and replace text
+author: Propromp
+branding:
+  color: green
+  icon: file-text
+inputs:
+  text:
+    description: The text you want to replace.
+    required: true
+  find:
+    description: The text you are looking for.
+    required: true
+  replace:
+    description: The text will be replaced.
+    required: true
+outputs:
+  result:
+    value: ${{ steps.replace.outputs.result }}
+    description: replaced value.
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      id: replace
+      run: |-
+        text=${{ inputs.text }}
+        echo $text | sed -e "s/${{ inputs.find }}/${{ inputs.replace }}" | read result
+        echo '::set-output name=result::$result'
