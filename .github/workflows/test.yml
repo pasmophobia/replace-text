@@ -8,7 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run replace
-        uses: replace-text@main
+        uses: Propromp/replace-text@main
         id: replace-text
       - name: echo
         run: echo ${{ steps.replace-text.outputs.result }}
